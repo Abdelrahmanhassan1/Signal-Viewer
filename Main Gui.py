@@ -231,25 +231,6 @@ class Ui_MainWindow(object):
         self.frame_counter_img_1 = 100
         self.flag_img_1 = False
 
-    def importImage_2(self):
-        self.data_path_2 = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
-        df_2 = pd.read_csv(self.data_path_2)
-        self.firstCol_2 = df_2.iloc[:, 0].values
-        print(self.firstCol_2)
-        self.secondCol_2 = df_2.iloc[:, 1].values
-        print(self.secondCol_2)
-        self.frame_counter_img_2 = 100
-        self.flag_img_2 = False
-
-    def importImage_3(self):
-        self.data_path_3 = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
-        df_3 = pd.read_csv(self.data_path_3)
-        self.firstCol_3 = df_3.iloc[:, 0].values
-        print(self.firstCol_3)
-        self.secondCol_3 = df_3.iloc[:, 1].values
-        self.frame_counter_img_3 = 100
-        self.flag_img_3 = False
-
     def playBack_1(self):
         print(self.firstCol_1)
         if not self.flag_img_1:
@@ -282,6 +263,48 @@ class Ui_MainWindow(object):
         else:
             self.flag_img_1 = False
 
+    def ZoomIn_1(self):
+        range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+        x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
+        y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
+        self.figureemg_1.clear()
+        ax_1 = self.figureemg_1.add_subplot(111)
+        ax_1.set_facecolor((1, 1, 1))
+        ax_1.grid(True)
+        ax_1.margins(x=-0.3, y=0.05)
+        ax_1.plot(x_axis_1, y_axis_1)
+        self.canvasemg_1.draw()
+        self.canvasemg_1.flush_events()
+
+    def ZoomOut_1(self):
+        range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+        x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
+        y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
+        self.figureemg_1.clear()
+        ax_1 = self.figureemg_1.add_subplot(111)
+        ax_1.set_facecolor((1, 1, 1))
+        ax_1.grid(True)
+        ax_1.set_facecolor((1, 1, 1))
+        ax_1.grid(True)
+        ax_1.margins(x=0.05, y=2)
+        ax_1.plot(x_axis_1, y_axis_1)
+        self.canvasemg_1.draw()
+        self.canvasemg_1.flush_events()
+
+    def SaveFigure_1(self):
+        self.figureemg_1.savefig("./Screenshots/First Signal.png")
+        print("Figure 1 printed")
+
+    def importImage_2(self):
+        self.data_path_2 = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
+        df_2 = pd.read_csv(self.data_path_2)
+        self.firstCol_2 = df_2.iloc[:, 0].values
+        print(self.firstCol_2)
+        self.secondCol_2 = df_2.iloc[:, 1].values
+        print(self.secondCol_2)
+        self.frame_counter_img_2 = 100
+        self.flag_img_2 = False
+
     def playBack_2(self):
         print(self.firstCol_2)
         if not self.flag_img_2:
@@ -308,12 +331,55 @@ class Ui_MainWindow(object):
                     self.canvasemg_2.draw()
                 self.canvasemg_2.flush_events()
                 return lines
+
             self.ani_img_2 = FuncAnimation(self.figureemg_2, update,
-                                         frames=np.arange(0, int(len(self.firstCol_2) / 2) - 100),
-                                         interval=10, blit=True)
+                                           frames=np.arange(0, int(len(self.firstCol_2) / 2) - 100),
+                                           interval=10, blit=True)
         else:
             self.flag_img_2 = False
 
+    def ZoomIn_2(self):
+        range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+        x_axis_2 = self.firstCol_2[range_min_2:2 * self.frame_counter_img_2]
+        y_axis_2 = self.secondCol_2[range_min_2:2 * self.frame_counter_img_2]
+        self.figureemg_2.clear()
+        ax_2 = self.figureemg_2.add_subplot(111)
+        ax_2.set_facecolor((1, 1, 1))
+        ax_2.grid(True)
+        ax_2.margins(x=-0.3, y=0.05)
+        ax_2.plot(x_axis_2, y_axis_2)
+        self.canvasemg_2.draw()
+        self.canvasemg_2.flush_events()
+        print(range_min_2)
+
+    def ZoomOut_2(self):
+        range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+        x_axis_2 = self.firstCol_2[range_min_2:2 * self.frame_counter_img_2]
+        y_axis_2 = self.secondCol_2[range_min_2:2 * self.frame_counter_img_2]
+        self.figureemg_2.clear()
+        ax_2 = self.figureemg_2.add_subplot(111)
+        ax_2.set_facecolor((1, 1, 1))
+        ax_2.grid(True)
+        ax_2.set_facecolor((1, 1, 1))
+        ax_2.grid(True)
+        ax_2.margins(x=0.05, y=2)
+        ax_2.plot(x_axis_2, y_axis_2)
+        self.canvasemg_2.draw()
+        self.canvasemg_2.flush_events()
+
+    def SaveFigure_2(self):
+        self.figureemg_2.savefig("./Screenshots/Second Signal.png")
+        print("Figure 2 printed")
+
+    def importImage_3(self):
+        self.data_path_3 = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
+        df_3 = pd.read_csv(self.data_path_3)
+        self.firstCol_3 = df_3.iloc[:, 0].values
+        print(self.firstCol_3)
+        self.secondCol_3 = df_3.iloc[:, 1].values
+        self.frame_counter_img_3 = 100
+        self.flag_img_3 = False
+        
     def playBack_3(self):
         print(self.firstCol_3)
         if not self.flag_img_3:
@@ -346,33 +412,6 @@ class Ui_MainWindow(object):
         else:
             self.flag_img_3 = False
 
-    def ZoomIn_1(self):
-        range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
-        x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
-        y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
-        self.figureemg_1.clear()
-        ax_1 = self.figureemg_1.add_subplot(111)
-        ax_1.set_facecolor((1, 1, 1))
-        ax_1.grid(True)
-        ax_1.margins(x=-0.3, y=0.05)
-        ax_1.plot(x_axis_1, y_axis_1)
-        self.canvasemg_1.draw()
-        self.canvasemg_1.flush_events()
-
-    def ZoomIn_2(self):
-        range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
-        x_axis_2 = self.firstCol_2[range_min_2:2 * self.frame_counter_img_2]
-        y_axis_2 = self.secondCol_2[range_min_2:2 * self.frame_counter_img_2]
-        self.figureemg_2.clear()
-        ax_2 = self.figureemg_2.add_subplot(111)
-        ax_2.set_facecolor((1, 1, 1))
-        ax_2.grid(True)
-        ax_2.margins(x=-0.3, y=0.05)
-        ax_2.plot(x_axis_2, y_axis_2)
-        self.canvasemg_2.draw()
-        self.canvasemg_2.flush_events()
-        print(range_min_2)
-
     def ZoomIn_3(self):
         range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
         x_axis_3 = self.firstCol_3[range_min_3:2 * self.frame_counter_img_3]
@@ -386,36 +425,6 @@ class Ui_MainWindow(object):
         self.canvasemg_3.draw()
         self.canvasemg_3.flush_events()
         print(range_min_3)
-
-    def ZoomOut_1(self):
-        range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
-        x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
-        y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
-        self.figureemg_1.clear()
-        ax_1 = self.figureemg_1.add_subplot(111)
-        ax_1.set_facecolor((1, 1, 1))
-        ax_1.grid(True)
-        ax_1.set_facecolor((1, 1, 1))
-        ax_1.grid(True)
-        ax_1.margins(x=0.05, y=2)
-        ax_1.plot(x_axis_1, y_axis_1)
-        self.canvasemg_1.draw()
-        self.canvasemg_1.flush_events()
-
-    def ZoomOut_2(self):
-        range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
-        x_axis_2 = self.firstCol_2[range_min_2:2 * self.frame_counter_img_2]
-        y_axis_2 = self.secondCol_2[range_min_2:2 * self.frame_counter_img_2]
-        self.figureemg_2.clear()
-        ax_2 = self.figureemg_2.add_subplot(111)
-        ax_2.set_facecolor((1, 1, 1))
-        ax_2.grid(True)
-        ax_2.set_facecolor((1, 1, 1))
-        ax_2.grid(True)
-        ax_2.margins(x=0.05, y=2)
-        ax_2.plot(x_axis_2, y_axis_2)
-        self.canvasemg_2.draw()
-        self.canvasemg_2.flush_events()
 
     def ZoomOut_3(self):
         range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
@@ -431,14 +440,6 @@ class Ui_MainWindow(object):
         ax_3.plot(x_axis_3, y_axis_3)
         self.canvasemg_3.draw()
         self.canvasemg_3.flush_events()
-
-    def SaveFigure_1(self):
-        self.figureemg_1.savefig("./Screenshots/First Signal.png")
-        print("Figure 1 printed")
-
-    def SaveFigure_2(self):
-        self.figureemg_2.savefig("./Screenshots/Second Signal.png")
-        print("Figure 2 printed")
 
     def SaveFigure_3(self):
         self.figureemg_3.savefig("./Screenshots/Third Signal.png")
