@@ -199,7 +199,7 @@ class Ui_MainWindow(object):
         self.pushButton.clicked.connect(self.importImage_1)
         self.pushButton_2.clicked.connect(self.playBack_1)
         self.pushButton_4.clicked.connect(self.ZoomIn_1)
-        self.pushButton_5.clicked.connect(self.ZoomOut_2)
+        self.pushButton_5.clicked.connect(self.ZoomOut_1)
         self.pushButton_6.clicked.connect(self.SaveFigure_1)
 
         # For Second Signal
@@ -379,7 +379,7 @@ class Ui_MainWindow(object):
         self.secondCol_3 = df_3.iloc[:, 1].values
         self.frame_counter_img_3 = 100
         self.flag_img_3 = False
-        
+
     def playBack_3(self):
         print(self.firstCol_3)
         if not self.flag_img_3:
