@@ -29,11 +29,11 @@ import csv
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1082, 849)
+        MainWindow.resize(1077, 888)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 90, 1011, 391))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 80, 1011, 151))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -70,33 +70,33 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QtCore.QRect(590, 61, 113, 21))
         self.lineEdit.setObjectName("lineEdit")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(20, 540, 1011, 201))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(20, 570, 1011, 201))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
-        self.horizontalSlider.setGeometry(QtCore.QRect(220, 760, 160, 22))
+        self.horizontalSlider.setGeometry(QtCore.QRect(220, 790, 160, 22))
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
         self.horizontalSlider_2 = QtWidgets.QSlider(self.centralwidget)
-        self.horizontalSlider_2.setGeometry(QtCore.QRect(710, 760, 160, 22))
+        self.horizontalSlider_2.setGeometry(QtCore.QRect(710, 790, 160, 22))
         self.horizontalSlider_2.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider_2.setObjectName("horizontalSlider_2")
         self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(70, 500, 121, 31))
+        self.comboBox_2.setGeometry(QtCore.QRect(70, 540, 121, 31))
         self.comboBox_2.setObjectName("comboBox_2")
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_7.setGeometry(QtCore.QRect(200, 500, 93, 28))
+        self.pushButton_7.setGeometry(QtCore.QRect(200, 540, 93, 28))
         self.pushButton_7.setObjectName("pushButton_7")
         self.comboBox_3 = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox_3.setGeometry(QtCore.QRect(810, 50, 131, 31))
         self.comboBox_3.setObjectName("comboBox_3")
         self.pushButton_8 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_8.setGeometry(QtCore.QRect(300, 500, 93, 28))
+        self.pushButton_8.setGeometry(QtCore.QRect(300, 540, 93, 28))
         self.pushButton_8.setObjectName("pushButton_8")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(480, 490, 121, 31))
+        self.label.setGeometry(QtCore.QRect(480, 530, 121, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -119,9 +119,21 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
+        self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(20, 230, 1011, 151))
+        self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(20, 380, 1011, 151))
+        self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1082, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1077, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -130,6 +142,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
         ##########################################################
         self.min_slider = 0
         self.avg_slider = (1999 - 1) // 2
@@ -147,9 +160,26 @@ class Ui_MainWindow(object):
         self.canvasemg_1 = FigureCanvas(self.figureemg_1)
         self.verticalLayout.addWidget(self.canvasemg_1)
 
+        self.figureemg_2 = Figure()
+        self.canvasemg_2 = FigureCanvas(self.figureemg_2)
+        self.verticalLayout_3.addWidget(self.canvasemg_2)
+
+        self.figureemg_3 = Figure()
+        self.canvasemg_3 = FigureCanvas(self.figureemg_3)
+        self.verticalLayout_5.addWidget(self.canvasemg_3)
+
         self.figure_2 = Figure()
         self.figure_canvas_2 = FigureCanvas(self.figure_2)
         self.verticalLayout_2.addWidget(self.figure_canvas_2)
+
+        self.first_col_1 = []
+        self.second_col_1 = []
+
+        self.first_col_2 = []
+        self.second_col_2 = []
+
+        self.first_col_3 = []
+        self.second_col_3 = []
 
         self.horizontalSlider.setMinimum(self.min_slider)
         self.horizontalSlider.setMaximum(self.avg_slider - 1)
@@ -157,93 +187,243 @@ class Ui_MainWindow(object):
         self.horizontalSlider_2.setMinimum(self.avg_slider + 1)
         self.horizontalSlider_2.setMaximum(self.max_slider)
 
-        self.pushButton.clicked.connect(self.importImage_1)
-        self.pushButton_2.clicked.connect(self.playBack_1)
-        self.pushButton_4.clicked.connect(self.ZoomIn_1)
-        self.pushButton_5.clicked.connect(self.ZoomOut_1)
+        self.pushButton.clicked.connect(self.import_csv)
+        self.pushButton_2.clicked.connect(self.playback)
+        self.pushButton_4.clicked.connect(self.zoom_in)
+        self.pushButton_5.clicked.connect(self.zoom_out)
         self.pushButton_3.clicked.connect(self.add_label)
         self.pushButton_7.clicked.connect(self.spectrogram)
         self.pushButton_19.clicked.connect(self.increase_speed)
         self.pushButton_20.clicked.connect(self.decrease_speed)
-        self.pushButton_6.clicked.connect(lambda: self.SaveFigure("Signals"))
-        self.pushButton_8.clicked.connect(lambda: self.SaveFigure("Spectrogram"))
+        self.pushButton_6.clicked.connect(lambda: self.save_figure("Signals", 1))
+        self.pushButton_8.clicked.connect(lambda: self.save_figure("Spectrogram", 2))
 
-    def importImage_1(self):
-        self.img_path_1 = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
-        df_1 = pd.read_csv(self.img_path_1)
-        self.firstCol_1 = df_1.iloc[:, 0].values
-        print(self.firstCol_1)
-        self.secondCol_1 = df_1.iloc[:, 1].values
-        self.frame_counter_img_1 = 100
-        self.flag_img_1 = False
+    def import_csv(self):
+        self.fileName = QFileDialog.getOpenFileName(filter="CSV (*.csv)")[0]
+        data_frame = pd.read_csv(self.fileName)
+        channel = self.comboBox.currentIndex()
+        if channel == 0:
+            self.first_col_1 = data_frame.iloc[:, 0].values
+            print(self.first_col_1)
+            self.second_col_1 = data_frame.iloc[:, 1].values
+            self.frame_counter_img_1 = 100
+            self.flag_img_1 = False
+        elif channel == 1:
+            self.first_col_2 = data_frame.iloc[:, 0].values
+            print(self.first_col_1)
+            self.second_col_2 = data_frame.iloc[:, 1].values
+            self.frame_counter_img_2 = 100
+            self.flag_img_2 = False
+        elif channel == 2:
+            self.first_col_3 = data_frame.iloc[:, 0].values
+            print(self.first_col_1)
+            self.second_col_3 = data_frame.iloc[:, 1].values
+            self.frame_counter_img_3 = 100
+            self.flag_img_3 = False
+
+    def playback(self):
+        channel = self.comboBox.currentIndex()
+        if channel == 0:
+            self.playBack_1()
+        elif channel == 1:
+            self.playBack_2()
+        elif channel == 2:
+            self.playBack_3()
 
     def playBack_1(self):
-        try:
-            print(self.firstCol_1)
-            if not self.flag_img_1:
-                self.flag_img_1 = True
-                c = self.frame_counter_img_1
-                self.figureemg_1.clear()
-                lines = [ax.plot([], [])[0] for ax in self.figureemg_1.axes]
-
-                def update(i):
-                    if not self.flag_img_1:
-                        self.ani_emg_1.event_source.stop()
-                        self.canvasemg_1.flush_events()
-                    else:
-                        self.frame_counter_img_1 = i + c
-                        range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
-                        x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
-                        y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
-                        ax_1 = self.figureemg_1.gca()
-                        ax_1.cla()
-                        ax_1.set_ylim(min(self.secondCol_1) - 0.5, max(self.secondCol_1) + 0.5)
-                        ax_1.set_facecolor((1, 1, 1))
-                        ax_1.grid(True)
-                        ax_1.plot(x_axis_1, y_axis_1)
-                        self.canvasemg_1.draw()
-                    self.canvasemg_1.flush_events()
-                    return lines
-                self.ani_emg_1 = FuncAnimation(self.figureemg_1, update,
-                                               frames=np.arange(0, int(len(self.firstCol_1) / 2) - 100),
-                                               interval=self.speed, blit=True)
-            else:
-                self.flag_img_1 = False
-        except Exception as e:
-            print(e)
-    def ZoomIn_1(self):
-        try:
-            range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
-            x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
-            y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
+        if not self.flag_img_1:
+            self.flag_img_1 = True
+            c = self.frame_counter_img_1
             self.figureemg_1.clear()
-            ax_1 = self.figureemg_1.add_subplot(111)
+            lines = [ax.plot([], [])[0] for ax in self.figureemg_1.axes]
+
+            def update(i):
+                if not self.flag_img_1:
+                    self.ani_emg_1.event_source.stop()
+                    self.canvasemg_1.flush_events()
+                else:
+                    self.frame_counter_img_1 = i + c
+                    range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+                    x_axis_1 = self.first_col_1[range_min_1:2 * self.frame_counter_img_1]
+                    y_axis_1 = self.second_col_1[range_min_1:2 * self.frame_counter_img_1]
+                    ax_1 = self.figureemg_1.gca()
+                    ax_1.cla()
+                    ax_1.axes.get_xaxis().set_visible(False)
+                    ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+                    ax_1.set_ylim(min(self.second_col_1) - 0.5, max(self.second_col_1) + 0.5)
+                    ax_1.set_facecolor((1, 1, 1))
+                    ax_1.grid(True)
+                    ax_1.plot(x_axis_1, y_axis_1)
+                    self.canvasemg_1.draw()
+                self.canvasemg_1.flush_events()
+                return lines
+            self.ani_emg_1 = FuncAnimation(self.figureemg_1, update,
+                                           frames=np.arange(0, int(len(self.first_col_1) / 2) - 100),
+                                           interval=self.speed, blit=True)
+        else:
+            self.flag_img_1 = False
+
+    def playBack_2(self):
+        if not self.flag_img_2:
+            self.flag_img_2 = True
+            c = self.frame_counter_img_2
+            self.figureemg_2.clear()
+            lines = [ax.plot([], [])[0] for ax in self.figureemg_2.axes]
+
+            def update(i):
+                if not self.flag_img_2:
+                    self.ani_img_2.event_source.stop()
+                    self.canvasemg_2.flush_events()
+                else:
+                    self.frame_counter_img_2 = i + c
+                    range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+                    x_axis_2 = self.first_col_2[range_min_2:2 * self.frame_counter_img_2]
+                    y_axis_2 = self.second_col_2[range_min_2:2 * self.frame_counter_img_2]
+                    ax_2 = self.figureemg_2.gca()
+                    ax_2.cla()
+                    ax_2.axes.get_xaxis().set_visible(False)
+                    ax_2.spines[["right", "bottom", "top"]].set_visible(False)
+                    ax_2.set_ylim(min(self.second_col_2) - 0.5, max(self.second_col_2) + 0.5)
+                    ax_2.set_facecolor((1, 1, 1))
+                    ax_2.grid(True)
+                    ax_2.plot(x_axis_2, y_axis_2)
+                    self.canvasemg_2.draw()
+                self.canvasemg_2.flush_events()
+                return lines
+
+            self.ani_img_2 = FuncAnimation(self.figureemg_2, update,
+                                           frames=np.arange(0, int(len(self.first_col_2) / 2) - 100),
+                                           interval=self.speed, blit=True)
+        else:
+            self.flag_img_2 = False
+
+    def playBack_3(self):
+        if not self.flag_img_3:
+            self.flag_img_3 = True
+            c = self.frame_counter_img_3
+            self.figureemg_3.clear()
+            lines = [ax.plot([], [])[0] for ax in self.figureemg_3.axes]
+
+            def update(i):
+                if not self.flag_img_3:
+                    self.ani_img_3.event_source.stop()
+                    self.canvasemg_3.flush_events()
+                else:
+                    self.frame_counter_img_3 = i + c
+                    range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
+                    x_axis_3 = self.first_col_3[range_min_3:2 * self.frame_counter_img_3]
+                    y_axis_3 = self.second_col_3[range_min_3:2 * self.frame_counter_img_3]
+                    ax_3 = self.figureemg_3.gca()
+                    ax_3.cla()
+                    ax_3.axes.get_xaxis().set_visible(False)
+                    ax_3.spines[["right", "bottom", "top"]].set_visible(False)
+                    ax_3.set_ylim(min(self.second_col_3) - 0.5, max(self.second_col_3) + 0.5)
+                    ax_3.set_facecolor((1, 1, 1))
+                    ax_3.grid(True)
+                    ax_3.plot(x_axis_3, y_axis_3)
+                    self.canvasemg_3.draw()
+                self.canvasemg_3.flush_events()
+                return lines
+            self.ani_img_3 = FuncAnimation(self.figureemg_3, update,
+                                           frames=np.arange(0, int(len(self.first_col_3) / 2) - 100),
+                                           interval=self.speed, blit=True)
+        else:
+            self.flag_img_3 = False
+
+    def zoom_in(self):
+        channel = self.comboBox.currentIndex()
+        first_col = self.first_col_1
+        second_col = self.second_col_1
+        canv = self.canvasemg_1
+        frame_counter = self.frame_counter_img_1
+        figure = self.figureemg_1
+        if channel == 0:
+            first_col = self.first_col_1
+            second_col = self.second_col_1
+            canv = self.canvasemg_1
+            frame_counter = self.frame_counter_img_1
+            figure = self.figureemg_1
+        elif channel == 1:
+            first_col = self.first_col_2
+            second_col = self.second_col_2
+            canv = self.canvasemg_2
+            frame_counter = self.frame_counter_img_2
+            figure = self.figureemg_2
+        elif channel == 2:
+            first_col = self.first_col_3
+            second_col = self.second_col_3
+            canv = self.canvasemg_3
+            frame_counter = self.frame_counter_img_3
+            figure = self.figureemg_3
+        try:
+            range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
+            x_axis_1 = first_col[range_min_1:2 * frame_counter]
+            y_axis_1 = second_col[range_min_1:2 * frame_counter]
+            figure.clear()
+            ax_1 = figure.add_subplot(111)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
+            ax_1.axes.get_xaxis().set_visible(False)
+            ax_1.spines[["right", "bottom", "top"]].set_visible(False)
             ax_1.margins(x=-0.3, y=0.05)
             ax_1.plot(x_axis_1, y_axis_1)
-            self.canvasemg_1.draw()
-            self.canvasemg_1.flush_events()
+            canv.draw()
+            canv.flush_events()
         except Exception as e:
             print(e)
-    def ZoomOut_1(self):
+
+    def zoom_out(self):
+        channel = self.comboBox.currentIndex()
+        first_col = self.first_col_1
+        second_col = self.second_col_1
+        canv = self.canvasemg_1
+        frame_counter = self.frame_counter_img_1
+        figure = self.figureemg_1
+        if channel == 0:
+            first_col = self.first_col_1
+            second_col = self.second_col_1
+            canv = self.canvasemg_1
+            frame_counter = self.frame_counter_img_1
+            figure = self.figureemg_1
+        elif channel == 1:
+            first_col = self.first_col_2
+            second_col = self.second_col_2
+            canv = self.canvasemg_2
+            frame_counter = self.frame_counter_img_2
+            figure = self.figureemg_2
+        elif channel == 2:
+            first_col = self.first_col_3
+            second_col = self.second_col_3
+            canv = self.canvasemg_3
+            frame_counter = self.frame_counter_img_3
+            figure = self.figureemg_3
         try:
-            range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
-            x_axis_1 = self.firstCol_1[range_min_1:2 * self.frame_counter_img_1]
-            y_axis_1 = self.secondCol_1[range_min_1:2 * self.frame_counter_img_1]
-            self.figureemg_1.clear()
-            ax_1 = self.figureemg_1.add_subplot(111)
+            range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
+            x_axis_1 = first_col[range_min_1:2 * frame_counter]
+            y_axis_1 = second_col[range_min_1:2 * frame_counter]
+            figure.clear()
+            ax_1 = figure.add_subplot(111)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
+            ax_1.axes.get_xaxis().set_visible(False)
+            ax_1.spines[["right", "bottom", "top"]].set_visible(False)
             ax_1.margins(x=0.05, y=2)
             ax_1.plot(x_axis_1, y_axis_1)
-            self.canvasemg_1.draw()
-            self.canvasemg_1.flush_events()
+            canv.draw()
+            canv.flush_events()
         except Exception as e:
             print(e)
+
     def increase_speed(self):
+        channel = self.comboBox.currentIndex()
+        if channel == 0:
+            second_col = self.second_col_1
+        elif channel == 1:
+            second_col = self.second_col_2
+        elif channel == 2:
+            second_col = self.second_col_3
         if self.speed < 5:
             self.speed = 5
             print("reached the limits")
@@ -271,6 +451,14 @@ class Ui_MainWindow(object):
         self.lineEdit.clear()
 
     def spectrogram(self):
+        channel = self.comboBox_2.currentIndex()
+        second_col = self.second_col_1
+        if channel == 0:
+            second_col = self.second_col_1
+        elif channel == 1:
+            second_col = self.second_col_2
+        elif channel == 2:
+            second_col = self.second_col_3
         try:
             self.min = self.horizontalSlider.value()
             self.max = self.horizontalSlider_2.value()
@@ -278,19 +466,31 @@ class Ui_MainWindow(object):
             ax.cla()
             ax.set_ylim(self.min, self.max)
             ax.set_xlim(self.min, self.max)
-            data = self.secondCol_1[self.min: self.max]
+            data = second_col[self.min: self.max]
             ax.specgram(data, Fs=30, cmap="rainbow")
             self.figure_canvas_2.draw()
             self.figure_canvas_2.flush_events()
         except Exception as e:
             print(e)
 
-    def SaveFigure(self, folder):
+    def save_figure(self, folder, combo_box):
+        channel = 0
+        figure = self.figureemg_1
+        if combo_box == 1:
+            channel = self.comboBox.currentIndex()
+            if channel == 0:
+                figure = self.figureemg_1
+            elif channel == 1:
+                figure = self.figureemg_2
+            elif channel == 2:
+                figure = self.figureemg_3
+        elif combo_box == 2:
+            channel = self.comboBox_2.currentIndex()
         if folder == "Signals":
-            self.figureemg_1.savefig(f"./Screenshots/{folder}/Signal.pdf", bbox_inches='tight')
+            figure.savefig(f"./Screenshots/{folder}/{self.comboBox.itemText(channel)}.pdf", bbox_inches='tight')
             print("Figure printed")
         elif folder == "Spectrogram":
-            self.figure_2.savefig(f"./Screenshots/{folder}/{folder.lower()}.pdf", bbox_inches='tight')
+            self.figure_2.savefig(f"./Screenshots/{folder}/{self.comboBox_2.itemText(channel)} spectrogram.pdf", bbox_inches='tight')
             print("Figure printed")
 
     def retranslateUi(self, MainWindow):
@@ -310,8 +510,6 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Change Signal"))
         self.label_3.setText(_translate("MainWindow", "Change Theme"))
 
-
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -320,3 +518,113 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
+
+# def plot_1(self):
+    #     range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+    #     x_axis_1 = self.first_col_1[range_min_1:2 * self.frame_counter_img_1]
+    #     y_axis_1 = self.second_col_1[range_min_1:2 * self.frame_counter_img_1]
+    #     ax_1 = self.figureemg_1.gca()
+    #     ax_1.cla()
+    #     # ax_1.set_axis_off()
+    #     ax_1.axes.get_xaxis().set_visible(False)
+    #     ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+    #     ax_1.set_ylim(min(self.second_col_1) - 0.5, max(self.second_col_1) + 0.5)
+    #     # ax_1.set_title("First Signal")
+    #     ax_1.set_facecolor((1, 1, 1))
+    #     ax_1.grid(True)
+    #     ax_1.plot(x_axis_1, y_axis_1)
+    #     self.canvasemg_1.draw()
+    #
+    # def plot_2(self):
+    #     range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+    #     x_axis_2 = self.first_col_2[range_min_2:2 * self.frame_counter_img_2]
+    #     y_axis_2 = self.second_col_2[range_min_2:2 * self.frame_counter_img_2]
+    #     ax_2 = self.figureemg_2.gca()
+    #     ax_2.cla()
+    #     # ax_1.set_axis_off()
+    #     ax_2.axes.get_xaxis().set_visible(False)
+    #     ax_2.spines[["right", "bottom", "top"]].set_visible(False)
+    #     ax_2.set_ylim(min(self.second_col_2) - 0.5, max(self.second_col_2) + 0.5)
+    #     # ax_1.set_title("First Signal")
+    #     ax_2.set_facecolor((1, 1, 1))
+    #     ax_2.grid(True)
+    #     ax_2.plot(x_axis_2, y_axis_2)
+    #     self.canvasemg_2.draw()
+    #
+    # def plot_3(self):
+    #     range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
+    #     x_axis_3 = self.first_col_3[range_min_3:2 * self.frame_counter_img_3]
+    #     y_axis_3 = self.second_col_3[range_min_3:2 * self.frame_counter_img_3]
+    #     ax_3 = self.figureemg_3.gca()
+    #     ax_3.cla()
+    #     # ax_1.set_axis_off()
+    #     ax_3.axes.get_xaxis().set_visible(False)
+    #     ax_3.spines[["right", "bottom", "top"]].set_visible(False)
+    #     ax_3.set_ylim(min(self.second_col_3) - 0.5, max(self.second_col_3) + 0.5)
+    #     # ax_1.set_title("First Signal")
+    #     ax_3.set_facecolor((1, 1, 1))
+    #     ax_3.grid(True)
+    #     ax_3.plot(x_axis_3, y_axis_3)
+    #     self.canvasemg_3.draw()
+################################################################################
+    # def playback(self):
+    #     flag_img = self.flag_img_1
+    #     frame_counter = self.frame_counter_img_1
+    #     figure = self.figureemg_1
+    #     first_col = self.first_col_1
+    #     second_col = self.second_col_1
+    #     canv = self.canvasemg_1
+    #     channel = self.comboBox.currentIndex()
+    #     print(channel)
+    #     if channel == 0:
+    #         flag_img = self.flag_img_1
+    #         frame_counter = self.frame_counter_img_1
+    #         figure = self.figureemg_1
+    #         first_col = self.first_col_1
+    #         canv = self.canvasemg_1
+    #     elif channel == 1:
+    #         flag_img = self.flag_img_2
+    #         frame_counter = self.frame_counter_img_2
+    #         figure = self.figureemg_2
+    #         first_col = self.first_col_2
+    #         canv = self.canvasemg_2
+    #     elif channel == 2:
+    #         flag_img = self.flag_img_3
+    #         frame_counter = self.frame_counter_img_3
+    #         figure = self.figureemg_3
+    #         first_col = self.first_col_3
+    #         canv = self.canvasemg_3
+    #     try:
+    #         if not flag_img:
+    #             flag_img = True
+    #             c = frame_counter
+    #             figure.clear()
+    #             lines = [ax.plot([], [])[0] for ax in figure.axes]
+    #             def update(i):
+    #                 if not flag_img:
+    #                     self.ani_emg_1.event_source.stop()
+    #                     self.canvasemg_1.flush_events()
+    #                 else:
+    #                     frame_counter = i + c
+    #                     range_min_1 = 2 * int(
+    #                         ((frame_counter - 100) + abs(frame_counter - 100)) / 2)
+    #                     x_axis_1 = first_col[range_min_1:2 * frame_counter]
+    #                     y_axis_1 = sec[range_min_1:2 * frame_counter]
+    #                     ax_1 = self.figureemg_1.gca()
+    #                     ax_1.cla()
+    #                     ax_1.set_ylim(min(self.secondCol_1) - 0.5, max(self.secondCol_1) + 0.5)
+    #                     ax_1.set_facecolor((1, 1, 1))
+    #                     ax_1.grid(True)
+    #                     ax_1.plot(x_axis_1, y_axis_1)
+    #                     self.canvasemg_1.draw()
+    #                 self.canvasemg_1.flush_events()
+    #                 return lines
+    #
+    #             self.ani_emg_1 = FuncAnimation(self.figureemg_1, update,
+    #                                            frames=np.arange(0, int(len(self.firstCol_1) / 2) - 100),
+    #                                            interval=10, blit=True)
+    #         else:
+    #             self.flag_img_1 = False
+    #     except Exception as e:
+    #         print(e)
