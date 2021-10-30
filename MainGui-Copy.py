@@ -425,30 +425,30 @@ class Ui_MainWindow(object):
             print(e)
 
     def zoom_in(self):
-        channel = self.comboBox.currentIndex()
-        first_col = self.first_col_1
-        second_col = self.second_col_1
-        canv = self.canvasemg_1
-        frame_counter = self.frame_counter_img_1
-        figure = self.figureemg_1
-        if channel == 0:
-            first_col = self.first_col_1
-            second_col = self.second_col_1
-            canv = self.canvasemg_1
-            frame_counter = self.frame_counter_img_1
-            figure = self.figureemg_1
-        elif channel == 1:
-            first_col = self.first_col_2
-            second_col = self.second_col_2
-            canv = self.canvasemg_2
-            frame_counter = self.frame_counter_img_2
-            figure = self.figureemg_2
-        elif channel == 2:
-            first_col = self.first_col_3
-            second_col = self.second_col_3
-            canv = self.canvasemg_3
-            frame_counter = self.frame_counter_img_3
-            figure = self.figureemg_3
+        # channel = self.comboBox.currentIndex()
+        # first_col = self.first_col_1
+        # second_col = self.second_col_1
+        # canv = self.canvasemg_1
+        # frame_counter = self.frame_counter_img_1
+        # figure = self.figureemg_1
+        # if channel == 0:
+        #     first_col = self.first_col_1
+        #     second_col = self.second_col_1
+        #     canv = self.canvasemg_1
+        #     frame_counter = self.frame_counter_img_1
+        #     figure = self.figureemg_1
+        # elif channel == 1:
+        #     first_col = self.first_col_2
+        #     second_col = self.second_col_2
+        #     canv = self.canvasemg_2
+        #     frame_counter = self.frame_counter_img_2
+        #     figure = self.figureemg_2
+        # elif channel == 2:
+        #     first_col = self.first_col_3
+        #     second_col = self.second_col_3
+        #     canv = self.canvasemg_3
+        #     frame_counter = self.frame_counter_img_3
+        #     figure = self.figureemg_3
         try:
             # To change color:
             self.change_color()
@@ -456,47 +456,84 @@ class Ui_MainWindow(object):
             self.change_theme()
             plt.style.use(self.selected_theme)
 
-            range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
-            x_axis_1 = first_col[range_min_1:2 * frame_counter]
-            y_axis_1 = second_col[range_min_1:2 * frame_counter]
-            figure.clear()
-            ax_1 = figure.add_subplot(111)
+            # range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
+            # x_axis_1 = first_col[range_min_1:2 * frame_counter]
+            # y_axis_1 = second_col[range_min_1:2 * frame_counter]
+            # figure.clear()
+            # ax_1 = figure.add_subplot(111)
+            # ax_1.set_facecolor((1, 1, 1))
+            # ax_1.grid(True)
+            # ax_1.axes.get_xaxis().set_visible(False)
+            # ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+            # ax_1.margins(x=-0.3, y=0.05)
+            # ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
+            # canv.draw()
+            # canv.flush_events()
+
+            range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+            x_axis_1 = self.first_col_1[range_min_1:2 * self.frame_counter_img_1]
+            y_axis_1 = self.second_col_1[range_min_1:2 * self.frame_counter_img_1]
+            self.figureemg_1.clear()
+            ax_1 = self.figureemg_1.add_subplot(111)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
-            ax_1.axes.get_xaxis().set_visible(False)
-            ax_1.spines[["right", "bottom", "top"]].set_visible(False)
             ax_1.margins(x=-0.3, y=0.05)
-            ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
-            canv.draw()
-            canv.flush_events()
+            ax_1.plot(x_axis_1, y_axis_1)
+            self.canvasemg_1.draw()
+            self.canvasemg_1.flush_events()
+
+            range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+            x_axis_2 = self.first_col_2[range_min_2:2 * self.frame_counter_img_2]
+            y_axis_2 = self.second_col_2[range_min_2:2 * self.frame_counter_img_2]
+            self.figureemg_2.clear()
+            ax_2 = self.figureemg_2.add_subplot(111)
+            ax_2.set_facecolor((1, 1, 1))
+            ax_2.grid(True)
+            ax_2.margins(x=-0.3, y=0.05)
+            ax_2.plot(x_axis_2, y_axis_2)
+            self.canvasemg_2.draw()
+            self.canvasemg_2.flush_events()
+
+            range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
+            x_axis_3 = self.first_col_3[range_min_3:2 * self.frame_counter_img_3]
+            y_axis_3 = self.second_col_3[range_min_3:2 * self.frame_counter_img_3]
+            self.figureemg_3.clear()
+            ax_3 = self.figureemg_3.add_subplot(111)
+            ax_3.set_facecolor((1, 1, 1))
+            ax_3.grid(True)
+            ax_3.margins(x=-0.3, y=0.05)
+            ax_3.plot(x_axis_3, y_axis_3)
+            self.canvasemg_3.draw()
+            self.canvasemg_3.flush_events()
+
         except Exception as e:
             print(e)
 
     def zoom_out(self):
-        channel = self.comboBox.currentIndex()
-        first_col = self.first_col_1
-        second_col = self.second_col_1
-        canv = self.canvasemg_1
-        frame_counter = self.frame_counter_img_1
-        figure = self.figureemg_1
-        if channel == 0:
-            first_col = self.first_col_1
-            second_col = self.second_col_1
-            canv = self.canvasemg_1
-            frame_counter = self.frame_counter_img_1
-            figure = self.figureemg_1
-        elif channel == 1:
-            first_col = self.first_col_2
-            second_col = self.second_col_2
-            canv = self.canvasemg_2
-            frame_counter = self.frame_counter_img_2
-            figure = self.figureemg_2
-        elif channel == 2:
-            first_col = self.first_col_3
-            second_col = self.second_col_3
-            canv = self.canvasemg_3
-            frame_counter = self.frame_counter_img_3
-            figure = self.figureemg_3
+        # channel = self.comboBox.currentIndex()
+        # first_col = self.first_col_1
+        # second_col = self.second_col_1
+        # canv = self.canvasemg_1
+        # frame_counter = self.frame_counter_img_1
+        # figure = self.figureemg_1
+        # if channel == 0:
+        #     first_col = self.first_col_1
+        #     second_col = self.second_col_1
+        #     canv = self.canvasemg_1
+        #     frame_counter = self.frame_counter_img_1
+        #     figure = self.figureemg_1
+        # elif channel == 1:
+        #     first_col = self.first_col_2
+        #     second_col = self.second_col_2
+        #     canv = self.canvasemg_2
+        #     frame_counter = self.frame_counter_img_2
+        #     figure = self.figureemg_2
+        # elif channel == 2:
+        #     first_col = self.first_col_3
+        #     second_col = self.second_col_3
+        #     canv = self.canvasemg_3
+        #     frame_counter = self.frame_counter_img_3
+        #     figure = self.figureemg_3
         try:
             # To change color:
             self.change_color()
@@ -504,21 +541,63 @@ class Ui_MainWindow(object):
             self.change_theme()
             plt.style.use(self.selected_theme)
 
-            range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
-            x_axis_1 = first_col[range_min_1:2 * frame_counter]
-            y_axis_1 = second_col[range_min_1:2 * frame_counter]
-            figure.clear()
-            ax_1 = figure.add_subplot(111)
+            # range_min_1 = 2 * int(((frame_counter - 100) + abs(frame_counter - 100)) / 2)
+            # x_axis_1 = first_col[range_min_1:2 * frame_counter]
+            # y_axis_1 = second_col[range_min_1:2 * frame_counter]
+            # figure.clear()
+            # ax_1 = figure.add_subplot(111)
+            # ax_1.set_facecolor((1, 1, 1))
+            # ax_1.grid(True)
+            # ax_1.set_facecolor((1, 1, 1))
+            # ax_1.grid(True)
+            # ax_1.axes.get_xaxis().set_visible(False)
+            # ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+            # ax_1.margins(x=0.05, y=2)
+            # ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
+            # canv.draw()
+            # canv.flush_events()
+
+            range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+            x_axis_1 = self.first_col_1[range_min_1:2 * self.frame_counter_img_1]
+            y_axis_1 = self.second_col_1[range_min_1:2 * self.frame_counter_img_1]
+            self.figureemg_1.clear()
+            ax_1 = self.figureemg_1.add_subplot(111)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
             ax_1.set_facecolor((1, 1, 1))
             ax_1.grid(True)
-            ax_1.axes.get_xaxis().set_visible(False)
-            ax_1.spines[["right", "bottom", "top"]].set_visible(False)
             ax_1.margins(x=0.05, y=2)
-            ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
-            canv.draw()
-            canv.flush_events()
+            ax_1.plot(x_axis_1, y_axis_1)
+            self.canvasemg_1.draw()
+            self.canvasemg_1.flush_events()
+
+            range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+            x_axis_2 = self.first_col_2[range_min_2:2 * self.frame_counter_img_2]
+            y_axis_2 = self.second_col_2[range_min_2:2 * self.frame_counter_img_2]
+            self.figureemg_2.clear()
+            ax_2 = self.figureemg_2.add_subplot(111)
+            ax_2.set_facecolor((1, 1, 1))
+            ax_2.grid(True)
+            ax_2.set_facecolor((1, 1, 1))
+            ax_2.grid(True)
+            ax_2.margins(x=0.05, y=2)
+            ax_2.plot(x_axis_2, y_axis_2)
+            self.canvasemg_2.draw()
+            self.canvasemg_2.flush_events()
+
+            range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
+            x_axis_3 = self.first_col_3[range_min_3:2 * self.frame_counter_img_3]
+            y_axis_3 = self.second_col_3[range_min_3:2 * self.frame_counter_img_3]
+            self.figureemg_3.clear()
+            ax_3 = self.figureemg_3.add_subplot(111)
+            ax_3.set_facecolor((1, 1, 1))
+            ax_3.grid(True)
+            ax_3.set_facecolor((1, 1, 1))
+            ax_3.grid(True)
+            ax_3.margins(x=0.05, y=2)
+            ax_3.plot(x_axis_3, y_axis_3)
+            self.canvasemg_3.draw()
+            self.canvasemg_3.flush_events()
         except Exception as e:
             print(e)
 
