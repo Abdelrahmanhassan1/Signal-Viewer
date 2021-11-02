@@ -19,7 +19,7 @@ import numpy as np
 from matplotlib.figure import Figure
 from PyPDF2 import PdfFileMerger, PdfFileReader
 import pdfkit
-
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
@@ -163,6 +163,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
+        self.horizontalSlider_3 = QtWidgets.QSlider(self.centralwidget)
+        self.horizontalSlider_3.setGeometry(QtCore.QRect(940, 560, 160, 22))
+        self.horizontalSlider_3.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider_3.setObjectName("horizontalSlider_3")
+        self.verticalSlider = QtWidgets.QSlider(self.centralwidget)
+        self.verticalSlider.setGeometry(QtCore.QRect(1120, 420, 22, 160))
+        self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
+        self.verticalSlider.setObjectName("verticalSlider")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1182, 26))
@@ -174,6 +182,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
 
         ##########################################################
         self.min_slider = 0
@@ -223,6 +232,8 @@ class Ui_MainWindow(object):
         self.figure_canvas_2 = FigureCanvas(self.figure_2)
         self.verticalLayout_2.addWidget(self.figure_canvas_2)
 
+        self.figures = [self.figureemg_1, self.figureemg_2, self.figureemg_3]
+        self.canvases = [self.canvasemg_1, self.canvasemg_2, self.canvasemg_3]
 
         self.first_col_1 = []
         self.second_col_1 = []
@@ -235,6 +246,7 @@ class Ui_MainWindow(object):
 
         self.horizontalSlider.setMinimum(self.min_slider)
         self.horizontalSlider.setMaximum(self.avg_slider - 1)
+
 
         self.horizontalSlider_2.setMinimum(self.avg_slider + 1)
         self.horizontalSlider_2.setMaximum(self.max_slider)
@@ -251,6 +263,12 @@ class Ui_MainWindow(object):
         self.pushButton_9.clicked.connect(self.show_signal)
         # self.pushButton_6.clicked.connect(lambda: self.save_figure("Signals", 1))
         self.pushButton_6.clicked.connect(self.print)
+        self.set_scroll_limits()
+        self.horizontalSlider_3.valueChanged.connect(self.scroll_horizontally)
+        self.verticalSlider.valueChanged.connect(self.scroll_vertically)
+
+
+
 
     def import_csv(self):
         try:
@@ -624,13 +642,6 @@ class Ui_MainWindow(object):
             print(e)
 
     def increase_speed(self):
-        channel = self.comboBox.currentIndex()
-        if channel == 0:
-            second_col = self.second_col_1
-        elif channel == 1:
-            second_col = self.second_col_2
-        elif channel == 2:
-            second_col = self.second_col_3
         if self.speed < 5:
             self.speed = 5
             print("reached the limits")
@@ -795,7 +806,6 @@ class Ui_MainWindow(object):
         # Write all the files into a file which is named as shown below
         mergedObject.write("./PDFs/mergedfilesoutput.pdf")
 
-
     def change_pallete(self):
         self.pallete = self.comboBox_5.currentText()
         print(self.pallete)
@@ -813,6 +823,7 @@ class Ui_MainWindow(object):
             self.merge_pdfs()
         except Exception as e:
             print(e)
+
     # def save_figure(self, folder, combo_box):
     #     channel = 0
     #     figure = self.figureemg_1
@@ -832,6 +843,146 @@ class Ui_MainWindow(object):
     #     elif folder == "Spectrogram":
     #         self.figure_2.savefig(f"./Screenshots/{folder}/{self.comboBox_2.itemText(channel)} spectrogram.pdf", bbox_inches='tight')
     #         print("Figure printed")
+
+    def scroll_horizontally(self):
+        try:
+            value = self.horizontalSlider_3.value()
+            print(value)
+            try:
+                ax_1 = self.figureemg_1.gca()
+                x_axis_1 = self.first_col_1[0:value]
+                y_axis_1 = self.second_col_1[0:value]
+                ax_1.cla()
+                ax_1.axes.get_xaxis().set_visible(False)
+                ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_1.set_facecolor((1, 1, 1))
+                ax_1.grid(True)
+                ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
+                ax_1.set_title(self.combo_items[0], y=1.0, pad=-10)
+                self.canvasemg_1.draw()
+                self.canvasemg_1.flush_events()
+            except Exception as e:
+                print(e)
+            try:
+                ax_2 = self.figureemg_2.gca()
+                x_axis_2 = self.first_col_2[0:value]
+                y_axis_2 = self.second_col_2[0:value]
+                ax_2.cla()
+                ax_2.axes.get_xaxis().set_visible(False)
+                ax_2.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_2.set_facecolor((1, 1, 1))
+                ax_2.grid(True)
+                ax_2.plot(x_axis_2, y_axis_2, color=self.selected_color)
+                ax_2.set_title(self.combo_items[1], y=1.0, pad=-10)
+                self.canvasemg_2.draw()
+                self.canvasemg_2.flush_events()
+            except Exception as e:
+                print(e)
+            try:
+                ax_3 = self.figureemg_3.gca()
+                x_axis_3 = self.first_col_3[0:value]
+                y_axis_3 = self.second_col_3[0:value]
+                ax_3.cla()
+                ax_3.axes.get_xaxis().set_visible(False)
+                ax_3.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_3.set_facecolor((1, 1, 1))
+                ax_3.grid(True)
+                ax_3.plot(x_axis_3, y_axis_3, color=self.selected_color)
+                ax_3.set_title(self.combo_items[2], y=1.0, pad=-10)
+                self.canvasemg_3.draw()
+                self.canvasemg_3.flush_events()
+            except Exception as e:
+                print(e)
+        except Exception as e:
+            print(e)
+
+    def scroll_vertically(self):
+        try:
+            value = self.verticalSlider.value()
+            print(value)
+            try:
+                ax_1 = self.figureemg_1.gca()
+                range_min_1 = 2 * int(((self.frame_counter_img_1 - 100) + abs(self.frame_counter_img_1 - 100)) / 2)
+                x_axis_1 = self.first_col_1[range_min_1:2 * self.frame_counter_img_1]
+                y_axis_1 = self.second_col_1[range_min_1:2 * self.frame_counter_img_1]
+                ax_1.cla()
+                ax_1.axes.get_xaxis().set_visible(False)
+                ax_1.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_1.set_facecolor((1, 1, 1))
+                ax_1.set_ylim(min(self.second_col_1), value)
+                ax_1.grid(True)
+                if value < 0:
+                    ax_1.set_ylim(value / 2 + 0.15, 0)
+                elif value > 0:
+                    ax_1.set_ylim(0, value / 2)
+                else:
+                    ax_1.set_ylim(-0.2, 0.2)
+                ax_1.plot(x_axis_1, y_axis_1, color=self.selected_color)
+                ax_1.set_title(self.combo_items[0], y=1.0, pad=-10)
+                self.canvasemg_1.draw()
+                self.canvasemg_1.flush_events()
+            except Exception as e:
+                print(e)
+            try:
+                ax_2 = self.figureemg_2.gca()
+                range_min_2 = 2 * int(((self.frame_counter_img_2 - 100) + abs(self.frame_counter_img_2 - 100)) / 2)
+                x_axis_2 = self.first_col_2[range_min_2:2 * self.frame_counter_img_2]
+                y_axis_2 = self.second_col_2[range_min_2:2 * self.frame_counter_img_2]
+                ax_2.cla()
+                ax_2.axes.get_xaxis().set_visible(False)
+                ax_2.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_2.set_facecolor((1, 1, 1))
+                ax_2.grid(True)
+                if value < 0:
+                    ax_2.set_ylim(value / 2 + 0.15, 0)
+                elif value > 0:
+                    ax_2.set_ylim(0, value / 2)
+                else:
+                    ax_2.set_ylim(-0.2,0.2)
+
+                ax_2.plot(x_axis_2, y_axis_2, color=self.selected_color)
+                ax_2.set_title(self.combo_items[1], y=1.0, pad=-10)
+                self.canvasemg_2.draw()
+                self.canvasemg_2.flush_events()
+            except Exception as e:
+                print(e)
+
+            try:
+                ax_3 = self.figureemg_3.gca()
+                range_min_3 = 2 * int(((self.frame_counter_img_3 - 100) + abs(self.frame_counter_img_3 - 100)) / 2)
+                x_axis_3 = self.first_col_3[range_min_3:2 * self.frame_counter_img_3]
+                y_axis_3 = self.second_col_3[range_min_3:2 * self.frame_counter_img_3]
+                ax_3.cla()
+                ax_3.axes.get_xaxis().set_visible(False)
+                ax_3.spines[["right", "bottom", "top"]].set_visible(False)
+                ax_3.set_facecolor((1, 1, 1))
+                ax_3.grid(True)
+                if value < 0:
+                    ax_3.set_ylim(value - 3.2, 0)
+                elif value > 0:
+                    ax_3.set_ylim(0, value + 1)
+                else:
+                    ax_3.set_ylim(-1 , 1)
+                ax_3.set_ylim(min(self.second_col_2), value)
+                ax_3.plot(x_axis_3, y_axis_3, color=self.selected_color)
+                ax_3.set_title(self.combo_items[2], y=1.0, pad=-10)
+                self.canvasemg_3.draw()
+                self.canvasemg_3.flush_events()
+            except Exception as e:
+                print(e)
+        except Exception as e:
+            print(e)
+
+    def set_scroll_limits(self):
+        self.horizontalSlider_3.setMinimum(8)
+        self.horizontalSlider_3.setMaximum(1200)
+
+        self.verticalSlider.setMinimum(-1)
+        self.verticalSlider.setMaximum(1)
+        self.verticalSlider.setTickInterval(20)
+
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

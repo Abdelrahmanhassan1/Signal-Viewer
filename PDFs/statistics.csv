@@ -1,4 +1,4 @@
 Signals,Data Points,Sum,Mean,Minimum,Standard Deviation,Mode,Maximum
-Hello,0,0,0,0,0,0,0
-channel_2,0,0,0,0,0,0,0
-channel_3,0,0,0,0,0,0,0
+channel_1,1200,8.400500000000003,0.007000416666666667,-0.3817,0.08989578708300211,0.0067,0.385
+channel_2,0,0.0,0.0,0.0,0.0,0.0,0.0
+channel_3,0,0.0,0.0,0.0,0.0,0.0,0.0
